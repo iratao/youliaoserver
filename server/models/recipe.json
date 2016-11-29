@@ -1,0 +1,42 @@
+{
+  "name": "Recipe",
+  "plural": "Recipes",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "cover": {
+      "type": "string",
+      "required": false
+    },
+    "introduction": {
+      "type": "string",
+      "required": false
+    }
+  },
+  "validations": [],
+  "relations": {
+    "spices": {
+      "type": "hasMany",
+      "model": "Spice",
+      "polymorphic": {
+        "foreignKey": "spiceId",
+        "discriminator": "spiceType"
+      },
+      "through": "SpiceLink",
+      "keyThrough": "recipeId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
