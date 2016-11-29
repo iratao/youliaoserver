@@ -27,14 +27,10 @@
   "validations": [],
   "relations": {
     "spices": {
-      "type": "hasMany",
+      "type": "hasAndBelongsToMany",
       "model": "Spice",
-      "polymorphic": {
-        "foreignKey": "spiceId",
-        "discriminator": "spiceType"
-      },
-      "through": "SpiceLink",
-      "keyThrough": "recipeId"
+      "foreignKey": "spiceId",
+      "through": "RecipeSpice"
     }
   },
   "acls": [],

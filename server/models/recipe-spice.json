@@ -1,0 +1,23 @@
+{
+  "name": "RecipeSpice",
+  "plural": "RecipeSpices",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "recipeId": {
+      "type": "number",
+      "required": true
+    },
+    "spiceId": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

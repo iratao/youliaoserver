@@ -17,7 +17,6 @@ module.exports = function(app) {
   function createSpices(cb) {
     mysqldb.automigrate('Spice', function(err) {
       if (err) throw err;
-
       app.models.Spice.create([{
         name: '藏红花',
         cover: 'https://img1.doubanio.com/view/photo/large/public/p2400829937.jpg',
@@ -87,30 +86,23 @@ module.exports = function(app) {
   }
 
   function createRecipeSpices(spices, recipes, cb) {
-    mysqldb.automigrate('SpiceLink', function(err) {
+    mysqldb.automigrate('RecipeSpice', function(err) {
       if (err) throw err;
-      app.models.SpiceLink.create([{
+      app.models.RecipeSpice.create([{
         recipeId: recipes[0].id,
         spiceId: spices[0].id,
       }, {
         recipeId: recipes[0].id,
         spiceId: spices[1].id,
-      }, {
-        recipeId: recipes[2].id,
-        spiceId: spices[2].id,
-      }, {
-        recipeId: recipes[3].id,
-        spiceId: spices[3].id,
-      }, {
-        recipeId: recipes[4].id,
-        spiceId: spices[4].id,
-      }, {
-        recipeId: recipes[5].id,
-        spiceId: spices[5].id,
-      }, {
-        recipeId: recipes[6].id,
-        spiceId: spices[6].id,
       }], cb);
     });
+
+    // async.each(spices, function(spice, done) {
+    //   recipes[0].spices.add(spice, done);
+    // }, function(err) {
+    //   console.log('recipe with spices:', recipes[0]);
+    //   recipes[0].spices(console.log);
+    //   cb(err);
+    // });
   }
 };

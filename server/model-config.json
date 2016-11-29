@@ -40,7 +40,7 @@
     "dataSource": "mysqldb",
     "public": true
   },
-  "SpiceLink": {
+  "RecipeSpice": {
     "dataSource": "mysqldb",
     "public": true
   }
